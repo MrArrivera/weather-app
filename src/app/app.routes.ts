@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { TableComponent } from './table/table.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'table', component: TableComponent }
 ];
