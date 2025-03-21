@@ -1,0 +1,71 @@
+
+<div class="component-container">
+    <div class="wave-group">
+        <input type="text" [(ngModel)]="filterText" placeholder="Search country..." class="input" />
+        <span class="bar"></span>
+        <label class="label">
+        </label>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th *ngFor="let column of columns">{{ column.label }}</th>
+              <th>More...</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let row of paginatedData">
+              <tr>
+                <td *ngFor="let column of columns">
+                  {{
+                    column.key === 'weather'
+                      ? `${row[column.key]}°`
+                      : column.key === 'weatherType'
+                        ? (row[column.key] === 'clear' ? 'Clear' : row[column.key] === 'cloudy' ? 'Cloudy' : row[column.key])
+                        : row[column.key]
+                  }}
+                </td>
+                
+                <td>
+                  <button id="boton" (click)="toggleExpand(row)" [disabled]="!row.children?.length">
+                    {{ row.isExpand ? 'Hide' : 'More' }}
+                  </button>
+                </td>
+              </tr>
+              <ng-container *ngIf="row.children?.length > 0 && row.isExpand">
+                <tr>
+                  <td [attr.colspan]="columns.length + 1">
+                    <div class="children-container">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th *ngFor="let childrenColumn of childrenColumns">{{ childrenColumn.label }}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let child of row.children">
+                            <td *ngFor="let childrenColumn of childrenColumns">
+                              {{ childrenColumn.key == "weather" ? `${child[childrenColumn.key]}°` : child[childrenColumn.key] }}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+      
+      
+    
+    <div class="pagination">
+        <button id="boton" (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+        <span>Página {{ currentPage }} de {{ totalPages }}</span>
+        <button id="boton" (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+      </div>
+</div>
+

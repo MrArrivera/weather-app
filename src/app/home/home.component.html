@@ -1,0 +1,12 @@
+<div class="container responsive-grid">
+
+    <div *ngFor="let card of countryData">
+      <app-card-weather
+        [name]="card.name" 
+        [capital]="card.capital" 
+        [weather]="card.weather"
+        [weatherType]="card.weatherType"
+        [date]="today">
+      </app-card-weather>
+    </div>
+</div>

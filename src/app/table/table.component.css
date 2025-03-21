@@ -1,0 +1,209 @@
+/* CSS CONTAINER */
+.component-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  overflow-x:auto;
+}
+
+/* CSS INPUT */
+.wave-group {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.wave-group .input {
+  font-size: 16px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 200px;
+  border: none;
+  border-bottom: 1px solid #515151;
+  background: transparent;
+}
+
+.wave-group .input:focus {
+  outline: none;
+}
+
+.wave-group .label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  display: flex;
+}
+
+.wave-group .label-char {
+  transition: 0.2s ease all;
+  transition-delay: calc(var(--index) * .05s);
+}
+
+.wave-group .input:focus ~ label .label-char,
+.wave-group .input:valid ~ label .label-char {
+  transform: translateY(-20px);
+  font-size: 14px;
+  color: #5264AE;
+}
+
+.wave-group .bar {
+  position: relative;
+  display: block;
+  width: 200px;
+}
+
+.wave-group .bar:before,.wave-group .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #5264AE;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.wave-group .bar:before {
+  left: 50%;
+}
+
+.wave-group .bar:after {
+  right: 50%;
+}
+
+.wave-group .input:focus ~ .bar:before,
+.wave-group .input:focus ~ .bar:after {
+  width: 50%;
+}
+
+
+/* CSS TABLE */
+/* Agrega un contenedor con scroll vertical */
+.table-container {
+  max-height: 700px; /* Ajusta la altura máxima según tu preferencia */
+  overflow-y: auto;
+  overflow-x: hidden; /* Evita el scroll horizontal */
+}
+
+thead {
+  background-color: #4daedf;
+  color: white;
+  font-weight: bold;
+}
+
+tbody {
+  background-color: #f0fbff;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+caption {
+  caption-side: bottom;
+  padding: 10px;
+}
+
+th, td {
+  padding: 8px 10px;
+  font-size: large;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+td {
+  text-align: center;
+}
+
+.children-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Asegura que use todo el ancho disponible */
+  background-color: #f0fbff; /* Color igual al fondo de la tabla */
+  padding: 10px;
+  border-top: 1px solid #ccc; /* Separador visual */
+  border-bottom: 1px solid #ccc; /* Separador visual */
+}
+
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* CSS BUTTONS */
+
+#boton {
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  margin-right: 10px;
+  margin-left: 10px;
+ }
+ 
+ #boton:hover,
+ #boton:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+ }
+ 
+ #boton:hover {
+  transform: translateY(-1px);
+ }
+ 
+ #boton:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+ }
+
+ #boton:disabled {
+  background-color: #E0E0E0;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.4);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+#boton:disabled:hover,
+#boton:disabled:focus {
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+  color: rgba(0, 0, 0, 0.4);
+  transform: none;
+}
